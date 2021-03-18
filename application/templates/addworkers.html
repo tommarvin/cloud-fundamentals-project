@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+{% block navbar %}
+<h1>
+    <hr>
+    Add New Worker
+    <hr>
+</h1>
+{% endblock %}
+{% endblock %}
+
+{% block body %}
+<div class='form'>
+    <form method='POST' action=''>
+        <hr>
+        <h2>
+            Worker's Details:
+        </h2>
+        {{form.FirstName.label}}
+        {{form.FirstName}}
+        <br>
+        {{form.LastName.label}}
+        {{form.LastName}}
+        <br>
+        {{form.Age.label}}
+        {{form.Age}}
+        <br>
+        <hr>
+        <h1>
+            Contact Details:
+        </h1>
+        {{form.PhoneNumber.label}}
+        {{form.PhoneNumber}}
+        <br>
+        {{form.PhoneNumber2.label}}
+        {{form.PhoneNumber2}}
+        <br>
+        {{form.Email.label}}
+        {{form.Email}}
+        <br>
+        {{form.Email2.label}}
+        {{form.Email2}}
+        <br>
+        <hr>
+        <h1>
+            Worker's Capabilities:
+        </h1>
+        {{form.Mowing.label}}
+        {{form.Mowing}}
+        <br>
+        {{form.Hedging.label}}
+        {{form.Hedging}}
+        <br>
+        {{form.Fencing.label}}
+        {{form.Fencing}}
+        <br>
+        {{form.Patios.label}}
+        {{form.Patios}}
+        <br>
+        {{form.BrickLaying.label}}
+        {{form.BrickLaying}}
+        <br>
+        <hr>
+        <br>
+        {{form.Submit}}
+    </form>
+</div>
+{% endblock %}
+
+{% block body2 %}
+
+{% endblock %}

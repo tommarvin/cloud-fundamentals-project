@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+<body>
+
+</body>
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="a">
+    <form method='POST' action='/My-Workers/Edit/{{id}}'>
+        {% for workers in Workers.query.filter_by(id=id) %}
+        <h1>
+            Update Workers Details:
+        </h1>
+        <hr>
+        <label form="firstname">First Name: </label>
+        <input type="text" value="{{workers.firstname}}" name='firstname' id='firstname'>
+        <br>
+        <label form="lastname">Last Name: </label>
+        <input class="form" type="text" value="{{workers.lastname}}" name='lastname' id='lastname'>
+        <br>
+        <label form="age">Age: </label>
+        <input class="form" type="text" value="{{workers.age}}" name='age' id='age'>
+        <br>
+        <hr>
+        {% endfor %}
+
+        {% for cond in ConD1.query.filter_by(workers_id=id) %}
+        <h1>
+            Edit Workers Contact Details:
+        </h1>
+        <hr>
+        <label form="phone1">Phone Number: </label>
+        <input class="form" type="text" value="{{cond.phone1}}" name='phone1' id='phone1'></input>
+        <br>
+        <label form="phone2">2nd Phone Number (Optional):</label>
+        <input class="form" type="text" value="{{cond.phone2}}" name='phone2' id='phone2'></input>
+        <br>
+        <label form="email1">Email Address: </label>
+        <input class="form" type="text" value="{{cond.email1}}" name='email1' id='email1'></input>
+        <br>
+        <label form="email2">2nd Email Address (Optional): </label>
+        <input class="form" type="text" value="{{cond.email2}}" name='email2' id='email2'></input>
+        <br>
+        <hr>
+        {% endfor %}
+
+        {% for capab in Capab.query.filter_by(workers_id=id) %}
+        <h1>
+            Update Workers Skills:
+        </h1>
+        <hr>
+        <label form="mowing">Mowing: </label>
+        <input class="form" type="checkbox" name='mowing' id='mowing'>
+        <br>
+        <label form="hedging">Hedging: </label>
+        <input class="form" type="checkbox" name='hedging' id='hedging'>
+        <br>
+        <label form="fencing">Fencing: </label>
+        <input class="form" type="checkbox" name='fencing' id='fencing'>
+        <br>
+        <label form="patios">Patios: </label>
+        <input class="form" type="checkbox" name='patios' id='patios'>
+        <br>
+        <label form="bricklaying">Brick Laying: </label>
+        <input class="form" type="checkbox" name='bricklaying' id='bricklaying'>
+        <br>
+        <hr>
+        {% endfor %}
+        <br>
+        <input type='submit' value='Save Changes'></input>
+    </form>
+</div>
+{% endblock %}

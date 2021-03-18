@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+<body>
+
+</body>
+
+{% block head %}
+<h1>
+    <hr>
+    My workers:
+    <hr>
+</h1>
+{% endblock %}
+
+
+{% block body %}
+
+<table class="center" border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Contact Details</th>
+            <th>Skills</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for x in range(y) %}
+        <tr>
+            {% for workers in Workers.query.filter_by(id=x) %}
+            <td>{{workers.id}}</td>
+            <td>{{workers.firstname}} {{workers.lastname}}</td>
+            <td>{{workers.age}}</td>
+            {% endfor %}
+            {% for cond in ConD1.query.filter_by(id=x) %}
+            <td>{{cond.phone1}}</td>
+            <td>{{cond.email1}}</td>
+            {% endfor %}
+            {% for capab in Capab.query.filter_by(id=x) %} 
+            <td>
+                <form action='View Skills' method="POST">
+                    <button type="submit">View Skills</button>
+                </form>
+            </td>
+                <td>
+                <form action='Edit' method='POST'>
+                    <button type="submit">Edit</button>
+                </form>
+                </td>
+            {% endfor %}
+
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{% endblock %}

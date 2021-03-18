@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+<body>
+
+</body>
+
+{% block head %}
+<h1>
+    <hr>
+    My workers:
+    <hr>
+</h1>
+{% endblock %}
+
+
+{% block body %}
+
+<table class="center" border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Contact Details</th>
+            <th>Skills</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for x in range (y) %}
+        <tr>
+            {% for workers in Workers.query.filter_by(id=x) %}
+            <td>{{workers.id}}</td>
+            <td>{{workers.firstname}} {{workers.lastname}}</td>
+            <td>{{workers.age}}</td>
+            {% endfor %}
+
+
+            {% for cond in ConD1.query.filter_by(id=x) %}
+            <td>
+                <form action='My-Workers/View-ContactDetails/{{cond.workers_id}}' method='POST'>
+                    <button class='center' type="submit">View Workers Contact Details</button>
+                </form>
+            </td>
+            {% endfor %}
+
+
+            {% for capab in Capab.query.filter_by(id=x) %}
+            {% if capab.mowing == True %}
+            <td>Mowing</td>
+            {% else %}
+            <td> </td>
+            {% endif %}
+            {% if capab.hedging == True %}
+            <td>Hedging</td>
+            {% else %}
+            <td> </td>
+            {% endif %}
+            {% if capab.fencing == True %}
+            <td>Fencing</td>
+            {% else %}
+            <td> </td>
+            {% endif %}
+            {% if capab.patios == True %}
+            <td>Patios</td>
+            {% else %}
+            <td> </td>     
+            {% endif %}
+            {% if capab.bricklaying == True %}
+            <td>Brick Laying</td>
+            {% else %}
+            <td> </td>
+            {% endif %}
+            <td>
+                <form action='/Edit/{{capab.workers_id}}' method='POST'>
+                    <button type="submit">Edit</button>
+                </form>
+
+                <form action='/My-Workers/Remove/{{capab.workers_id}}' method='POST'>
+                    <button type="submit">Remove</button>
+                </form>
+
+
+            </td>
+            {% endfor %}
+
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{% endblock %}

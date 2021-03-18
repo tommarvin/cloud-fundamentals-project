@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block head %} 
+
+{% endblock %} 
+
+{% block body %} 
+<h1>Contact Details:</h1>
+<br>
+<table class="center" border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone Number 1</th>
+            <th>Phone Number 2</th>
+            <th>Email Address 1</th>
+            <th>Email Address 2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {% for workers in Workers.query.filter_by(id=id) %}
+            <td>{{workers.firstname}} {{workers.lastname}}</td>
+            {% endfor %}
+            {% for cond in ConD1.query.filter_by(workers_id=id) %}
+            <td>{{cond.phone1}}</td>
+            <td>{{cond.phone2}}</td>
+            <td>{{cond.email1}}</td>
+            <td>{{cond.email2}}</td>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+<br>
+<div>
+    <form action='/My-Workers' method="POST">
+        <button class='center' type="submit">Return</button>    
+    </form>
+    
+
+</div>
+
+
+
+{% endblock %} 
