@@ -1,0 +1,35 @@
+{% extends 'base.html' %} 
+
+{% block body %} 
+<h1>Customer Contact Details:</h1>
+<br>
+<table class="center" border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Email Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {% for cstm in CstmDt.query.filter_by(jobs_id=id) %}
+            <td>{{cstm.customername}}</td>
+            <td>{{cstm.customerphone}}</td>
+            <td>{{cstm.customeremail}}</td>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+<br>
+<div>
+    <form action='/My-Jobs' method="POST">
+        <button class='center' type="submit">Return</button>    
+    </form>
+    
+
+</div>
+
+
+
+{% endblock %} 

@@ -1,0 +1,27 @@
+{% extends 'base.html' %} 
+
+{% block body %} 
+<h1>Job Address:</h1>
+<br>
+<div>
+    {% for add in Address.query.filter_by(jobs_id=id) %} 
+    <h3>
+        {{add.address1}}
+        <br>
+        {{add.address2}}
+        <br>
+        {{add.address3}}
+        <br>
+        {{add.postcode}}
+    </h3>
+    <form action='/My-Jobs' method="POST">
+        <button class='center' type="submit">Return</button>    
+    </form>
+    {% endfor %}
+    
+
+</div>
+
+
+
+{% endblock %} 

@@ -35,7 +35,7 @@
             {% endfor %}
 
 
-            {% for cond in ConD1.query.filter_by(id=x) %}
+            {% for cond in ConD1.query.filter_by(workers_id=x) %}
             <td>
                 <form action='My-Workers/View-ContactDetails/{{cond.workers_id}}' method='POST'>
                     <button class='center' type="submit">View Workers Contact Details</button>
@@ -44,32 +44,24 @@
             {% endfor %}
 
 
-            {% for capab in Capab.query.filter_by(id=x) %}
+            {% for capab in Capab.query.filter_by(workers_id=x) %}
+            <td>
             {% if capab.mowing == True %}
-            <td>Mowing</td>
-            {% else %}
-            <td> </td>
+            |    Mowing    |  
             {% endif %}
             {% if capab.hedging == True %}
-            <td>Hedging</td>
-            {% else %}
-            <td> </td>
+            |    Hedging    |  
             {% endif %}
             {% if capab.fencing == True %}
-            <td>Fencing</td>
-            {% else %}
-            <td> </td>
+            |    Fencing    |  
             {% endif %}
             {% if capab.patios == True %}
-            <td>Patios</td>
-            {% else %}
-            <td> </td>     
+            |    Patios    | 
             {% endif %}
             {% if capab.bricklaying == True %}
-            <td>Brick Laying</td>
-            {% else %}
-            <td> </td>
+            |    Brick Laying    |  
             {% endif %}
+            </td>
             <td>
                 <form action='/Edit/{{capab.workers_id}}' method='POST'>
                     <button type="submit">Edit</button>

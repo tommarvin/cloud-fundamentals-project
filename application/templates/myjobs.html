@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+<body>
+
+</body>
+
+{% block head %}
+<h1>
+    <hr>
+    My workers:
+    <hr>
+</h1>
+{% endblock %}
+
+
+{% block body %}
+<table class="center" border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Start Date</th>
+            <th>Workers Required</th>
+            <th>Address</th>
+            <th>Requirements</th>
+            <th>Customer Contact Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for y in range (x) %}
+        <tr>
+            {% for job in Jobs.query.filter_by(id=y) %}
+            <td>{{job.id}}</td>
+            <td>{{job.start}}</td>
+            <td>{{job.numbworkers}}</td>
+            {% endfor %}
+
+
+            {% for add in Address.query.filter_by(jobs_id=y) %}
+            <td>
+                <form action='My-Jobs/View-Address/{{add.jobs_id}}' method='POST'>
+                    <button class='center' type="submit">View Address</button>
+                </form>
+            </td>
+            {% endfor %}
+
+
+            {% for req in Req.query.filter_by(jobs_id=y) %}
+            <td>
+                {% if req.mowing == True %}
+                Mowing
+                {% endif %}
+                {% if req.hedging == True %}
+                Hedging
+                {% endif %}
+                {% if req.fencing == True %}
+                Fencing
+                {% endif %}
+                {% if req.patios == True %}
+                Patios
+                {% endif %}
+                {% if req.bricklaying == True %}
+                Brick Laying
+                {% endif %}
+            </td>
+            {% endfor %} 
+
+            {% for cstm in CstmDt.query.filter_by(jobs_id=y) %}
+            <td>
+                <form action='/My-Jobs/View-Customer-ContactDetails/{{cstm.jobs_id}}' method='POST'>
+                    <button type="submit">View Details</button>
+                </form>
+            </td>
+            {% endfor %} 
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block head %}
+<h1>
+    Add New Job
+</h1> 
+{% endblock %}
+
+{% block body %}
+<div class='form'>
+    <form method='POST' action=''>
+        <hr>
+        <h1>
+            Job Details:
+        </h1>
+        {{form.StartDate.label}}
+        {{form.StartDate}}
+        <br>
+        {{form.WorkersReq.label}}
+        {{form.WorkersReq}}
+        <hr>
+        <hr>
+        <h1>
+            Job Requirements:
+        </h1>
+        {{form.Mowing.label}}
+        {{form.Mowing}}
+        <br>
+        {{form.Hedging.label}}
+        {{form.Hedging}}
+        <br>
+        {{form.Fencing.label}}
+        {{form.Fencing}}
+        <br>
+        {{form.Patios.label}}
+        {{form.Patios}}
+        <br>
+        {{form.BrickLaying.label}}
+        {{form.BrickLaying}}
+        <br>
+        <hr>
+        <hr>
+        <h1>
+            Job Location:
+        </h1>
+        {{form.Address1.label}}
+        {{form.Address1}}
+        <br>
+        {{form.Address2.label}}
+        {{form.Address2}}
+        <br>
+        {{form.Address3.label}}
+        {{form.Address3}}
+        <br>
+        {{form.Postcode.label}}
+        {{form.Postcode}}
+        <br>
+        <hr>
+        <hr>
+        <h1>
+            Customer Details:
+        </h1>
+        {{form.CustomerName.label}}
+        {{form.CustomerName}}
+        <br>
+        {{form.CustomerPhone.label}}
+        {{form.CustomerPhone}}
+        <br>
+        {{form.CustomerEmail.label}}
+        {{form.CustomerEmail}}
+        <br>
+        <hr>
+        <br>
+        {{form.Submit}}
+    </form>
+</div>
+{% endblock %}
