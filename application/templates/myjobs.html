@@ -7,7 +7,7 @@
 {% block head %}
 <h1>
     <hr>
-    My workers:
+    Current Jobs:
     <hr>
 </h1>
 {% endblock %}
@@ -27,6 +27,7 @@
     </thead>
     <tbody>
         {% for y in range (x) %}
+        {% if (y > 0) %} 
         <tr>
             {% for job in Jobs.query.filter_by(id=y) %}
             <td>{{job.id}}</td>
@@ -72,6 +73,7 @@
             </td>
             {% endfor %} 
         </tr>
+        {% endif %}
         {% endfor %}
     </tbody>
 </table>

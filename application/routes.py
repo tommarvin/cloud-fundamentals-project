@@ -165,7 +165,13 @@ def Add_Job():
             job3 = Address(address1=address1, address2=address2, address3=address3, postcode=postcode, jobs_id=job1.id)
             db.session.add(job3)
             job4 = CstmDt(customername=customername, customerphone=customerphone, customeremail=customeremail, jobs_id=job1.id)
-            db.session.add(job4) 
+            db.session.add(job4)
             db.session.commit()
             return redirect('/My-Jobs')
     return render_template('addjob.html', form=form)
+
+
+
+@app.route('/View-Teams')
+def View_Teams():
+    return render_template('viewteams.html')
