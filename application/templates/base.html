@@ -12,7 +12,7 @@
 
         .navbar {
             overflow: hidden;
-            background-color: #333;
+            background-color: black;
         }
 
         .navbar a {
@@ -42,14 +42,14 @@
 
         .navbar a:hover,
         .subnav:hover .subnavbtn {
-            background-color: gray;
+            background-color: rgb(51, 47, 47);
         }
 
         .subnav-content {
             display: none;
             position: absolute;
             left: 0;
-            background-color: gray;
+            background-color: rgb(51, 47, 47);
             z-index: 1;
         }
 
@@ -60,7 +60,7 @@
         }
 
         .subnav-content a:hover {
-            background-color: #eee;
+            background-color: white;
             color: black;
         }
 
@@ -76,22 +76,22 @@
     </style>
 </head>
 
-<body>
+<body bgcolor="white", text-align: center>
 
     <div class="navbar">
         <a href="/">Home</a>
         <div class="subnav">
             <button class="subnavbtn">Workers <i class="fa fa-caret-down"></i></button>
             <div class="subnav-content">
-                <a href="/My-Workers">View/Edit Workers</a>
-                <a href="/Add-Workers">Add Workers</a>
+                <a href="/My-Workers">View/Edit Current Workers</a>
+                <a href="/Add-Workers">Add New Worker</a>
             </div>
         </div>
         <div class="subnav">
             <button class="subnavbtn">Jobs<i class="fa fa-caret-down"></i></button>
             <div class="subnav-content">
                 <a href="/My-Jobs">View/Edit Current Jobs</a>
-                <a href="/Add-Jobs">Add New Jobs</a>
+                <a href="/Add-Jobs">Add New Job</a>
 
             </div>
         </div>
@@ -108,6 +108,7 @@
 {% endblock %}
 
 {% block body %}
+
 
 {% endblock %}
 

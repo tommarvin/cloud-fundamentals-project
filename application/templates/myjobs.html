@@ -6,36 +6,48 @@
 
 {% block head %}
 <h1>
-    <hr>
     Current Jobs:
-    <hr>
 </h1>
 {% endblock %}
 
 
 {% block body %}
-<table class="center" border="1">
+<table class="center" border="5">
     <thead>
         <tr>
             <th>ID</th>
+            <th>House Name</th>
             <th>Start Date</th>
-            <th>Workers Required</th>
+            <th>Team</th>
             <th>Address</th>
             <th>Requirements</th>
             <th>Customer Contact Details</th>
+            <th>Edit/Remove</th>
         </tr>
     </thead>
     <tbody>
         {% for y in range (x) %}
-        {% if (y > 0) %} 
         <tr>
             {% for job in Jobs.query.filter_by(id=y) %}
             <td>{{job.id}}</td>
-            <td>{{job.start}}</td>
-            <td>{{job.numbworkers}}</td>
-            {% endfor %}
-
-
+            {%endfor%} 
+            {%for add in Address.query.filter_by(jobs_id=y) %} 
+            <td>{{add.address1}}</td>
+            {%endfor%}
+            {% for job in Jobs.query.filter_by(id=y) %}
+            <td>{{job.start}}</td>             
+            <td>
+                {% if Team.query.filter_by(teamnumber=job.id).count() == (0) %}
+                <form action='/My-Jobs/Create-Team/{{job.id}}'>
+                    <button class='center' type="submit">Create Team</button>
+                </form>
+                {% else %} 
+                <form action='/My-Jobs/Create-Team/{{job.id}}'>
+                    <button class='center' type="submit">View Team</button>
+                </form>
+                {% endif %} 
+            </td>
+            {%endfor%}
             {% for add in Address.query.filter_by(jobs_id=y) %}
             <td>
                 <form action='My-Jobs/View-Address/{{add.jobs_id}}' method='POST'>
@@ -43,24 +55,22 @@
                 </form>
             </td>
             {% endfor %}
-
-
             {% for req in Req.query.filter_by(jobs_id=y) %}
             <td>
                 {% if req.mowing == True %}
-                Mowing
+                |    Mowing    |  
                 {% endif %}
                 {% if req.hedging == True %}
-                Hedging
+                |    Hedging    |
                 {% endif %}
                 {% if req.fencing == True %}
-                Fencing
+                |    Fencing    |
                 {% endif %}
                 {% if req.patios == True %}
-                Patios
+                |    Patios    |
                 {% endif %}
                 {% if req.bricklaying == True %}
-                Brick Laying
+                |    Brick Laying    |
                 {% endif %}
             </td>
             {% endfor %} 
@@ -68,13 +78,22 @@
             {% for cstm in CstmDt.query.filter_by(jobs_id=y) %}
             <td>
                 <form action='/My-Jobs/View-Customer-ContactDetails/{{cstm.jobs_id}}' method='POST'>
-                    <button type="submit">View Details</button>
+                    <button class='center' type="submit">View Details</button>
+                </form>
+            </td>
+            <td>
+                <form action='/Edit-Jobs/{{cstm.jobs_id}}' method='POST'>
+                    <button type="submit">Edit</button>
+                </form>
+
+                <form action='/My-Jobs/Remove/{{cstm.jobs_id}}' method='POST'>
+                    <button type="submit">Remove</button>
                 </form>
             </td>
             {% endfor %} 
         </tr>
-        {% endif %}
         {% endfor %}
     </tbody>
 </table>
+<br>
 {% endblock %}

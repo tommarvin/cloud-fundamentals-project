@@ -1,11 +1,8 @@
 from application import app
 from flask import render_template, request, redirect
-from application.models import Capab, Workers, ConD1, Jobs, Address, Req, CstmDt
+from application.models import Capab, Workers, ConD1, Jobs, Address, Req, CstmDt, Team
 from application import db
 from application.forms import AddJobForm, WorkerForm
-
-
-
 
 
 @app.route('/')
@@ -55,13 +52,9 @@ def viewworkers():
     return render_template('myworkerscopy.html', Workers=Workers, ConD1=ConD1, Capab=Capab, y=y)
 
 
-
-
 @app.route('/Edit/<id>', methods=['GET', 'POST'])
 def editworker(id):
     return render_template('edit.html', id=id, Workers=Workers, Capab=Capab, ConD1=ConD1)
-
-
 
 @app.route('/My-Workers/Edit/<id>', methods=['GET', 'POST'])
 def edit(id):
@@ -119,9 +112,8 @@ def viewjobs():
     b = []
     for worker in Workers.query.all():
         b.append(worker)
-    x = (len(b)+50)
-    
-    return render_template('myjobs.html', Jobs=Jobs, Req=Req, Address=Address, CstmDt=CstmDt, x=x)
+    x = (len(b)+50)    
+    return render_template('myjobs.html', Jobs=Jobs, Req=Req, Address=Address, CstmDt=CstmDt, x=x, Team=Team)
 
 
 @app.route('/My-Jobs/View-Customer-ContactDetails/<id>', methods=['GET', 'POST'])
@@ -131,6 +123,81 @@ def View_Custm_CD(id):
 @app.route('/My-Jobs/View-Address/<id>', methods=['GET', 'POST'])
 def View_Address(id):
     return render_template('viewaddress.html', id=id, Address=Address)
+
+
+
+
+
+
+
+
+
+
+
+
+
+@app.route('/My-Jobs/Create-Team/<id>', methods=['POST', 'GET'])
+def Create_Team(id):
+    Team0=[]
+    InTeam=[]
+    NotTeam=[]
+    for teams in Team.query.filter_by(teamnumber=id):
+        Team0.append(teams.workers_id)
+    for workers in Workers.query.all():
+        if workers.id in Team0:
+            InTeam.append(workers.id)
+        else:
+            NotTeam.append(workers.id)
+
+    return render_template('createteam.html', id=id, Team=Team, Workers=Workers, Capab=Capab, Jobs=Jobs, ConD1=ConD1, Req=Req, InTeam=InTeam, NotTeam=NotTeam)
+
+
+@app.route('/My-Jobs/Create-Team/Add/<ID>/<id>', methods=['POST', 'GET'])
+def Add_First_Member(ID, id):
+    if request.method =='POST':
+        a = []
+        for worker in Workers.query.all():
+            a.append(worker)
+        y = (len(a)+50)
+
+        workerD = Workers.query.filter_by(id=id).first()
+        jobD = Jobs.query.filter_by(id=ID).first()
+        teamD = Team(teamnumber=ID, workers_id=workerD.id, jobs_id=jobD.id)
+        db.session.add(teamD)
+        db.session.commit()    
+        
+
+        Team0=[]
+        InTeam=[]
+        NotTeam=[]
+        for teams in Team.query.filter_by(teamnumber=ID):
+            Team0.append(teams.workers_id)
+        for workers in Workers.query.all():
+            if workers.id in Team0:
+                InTeam.append(workers.id)
+            else:
+                NotTeam.append(workers.id)
+        
+        return render_template('createteam.html', id=ID, Team=Team, Workers=Workers, Capab=Capab, Jobs=Jobs, ConD1=ConD1, Req=Req, InTeam=InTeam, NotTeam=NotTeam)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @app.route('/Add-Jobs', methods=['POST', 'GET'])
@@ -172,6 +239,73 @@ def Add_Job():
 
 
 
-@app.route('/View-Teams')
-def View_Teams():
-    return render_template('viewteams.html')
+@app.route('/My-Jobs/Create-Team/Remove/<id>/<worker_id>', methods=['GET', 'POST'])
+def removeMember(id, worker_id):
+    team = Team.query.filter_by(teamnumber=id, workers_id=worker_id).first()
+    db.session.delete(team)
+    db.session.commit()
+
+    Team0=[]
+    InTeam=[]
+    NotTeam=[]
+    for teams in Team.query.filter_by(teamnumber=id):
+        Team0.append(teams.workers_id)
+    for workers in Workers.query.all():
+        if workers.id in Team0:
+            InTeam.append(workers.id)
+        else:
+            NotTeam.append(workers.id)
+    return render_template('createteam.html', id=id, Team=Team, Workers=Workers, Capab=Capab, Jobs=Jobs, ConD1=ConD1, Req=Req, InTeam=InTeam, NotTeam=NotTeam)
+
+
+
+@app.route('/Edit-Jobs/<id>', methods=['GET', 'POST'])
+def editjob(id):
+    return render_template('editjob.html', id=id, Jobs=Jobs, Req=Req, Address=Address, CstmDt=CstmDt)
+
+@app.route('/My-Jobs/Edit/<id>', methods=['GET', 'POST'])
+def editj(id):
+
+    if request.method == 'POST':
+        jobd = Jobs.query.filter_by(id=id).first()    
+        jobrq = Req.query.filter_by(jobs_id=id).first()
+        jobad = Address.query.filter_by(jobs_id=id).first()
+        jobcd = CstmDt.query.filter_by(jobs_id=id).first()
+        
+        jobd.start = request.form.get('start')
+        jobd.numbworkers = request.form.get('numbworkers')
+
+        jobrq.mowing = bool(request.form.get('mowing'))
+        jobrq.hedging = bool(request.form.get('hedging'))
+        jobrq.fencing = bool(request.form.get('fencing'))
+        jobrq.patios = bool(request.form.get('patios'))
+        jobrq.bricklaying = bool(request.form.get('bricklaying'))
+        
+        jobad.address1 = request.form.get('address1')
+        jobad.address2 = request.form.get('address2')
+        jobad.address3 = request.form.get('address3')
+        jobad.postcode = request.form.get('postcode')
+
+        jobcd.customername = request.form.get('customername')
+        jobcd.customerphone = request.form.get('customerphone')
+        jobcd.customeremail = request.form.get('customeremail')
+
+        db.session.commit()
+    
+    return redirect('/My-Jobs')
+
+
+@app.route('/My-Jobs/Remove/<id>', methods=['GET', 'POST'])
+def removejob(id):
+    delete1 = Jobs.query.filter_by(id=id).first()
+    delete2 = Req.query.filter_by(jobs_id=id).first()
+    delete3 = Address.query.filter_by(jobs_id=id).first()
+    delete4 = CstmDt.query.filter_by(jobs_id=id).first()
+    for teams in Team.query.filter_by(jobs_id=id).all():
+        db.session.delete(teams)
+    db.session.delete(delete1)
+    db.session.delete(delete2)
+    db.session.delete(delete3)
+    db.session.delete(delete4)
+    db.session.commit()
+    return redirect('/My-Jobs')

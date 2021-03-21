@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+<body>
+
+</body>
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="a">
+    <form method='POST' action='/My-Jobs/Edit/{{id}}'>
+        {% for jobs in Jobs.query.filter_by(id=id) %}
+        <h1>
+            Update Job Details:
+        </h1>
+        <hr>
+        <label form="start">Start Date: </label>
+        <input type="text" value="{{jobs.start}}" name='start' id='start'>
+        <br>
+        <label form="numbworkers">Estimated Number of workers required: </label>
+        <input class="form" type="text" value="{{jobs.numbworkers}}" name='numbworkers' id='numbworkers'>
+        <br>
+        <hr>
+        {% endfor %}
+        
+        {% for req in Req.query.filter_by(jobs_id=id) %}
+        <h1>
+            Update Jobs Skills:
+        </h1>
+        <hr>
+        <label form="mowing">Mowing: </label>
+        <input class="form" type="checkbox" name='mowing' id='mowing'>
+        <br>
+        <label form="hedging">Hedging: </label>
+        <input class="form" type="checkbox" name='hedging' id='hedging'>
+        <br>
+        <label form="fencing">Fencing: </label>
+        <input class="form" type="checkbox" name='fencing' id='fencing'>
+        <br>
+        <label form="patios">Patios: </label>
+        <input class="form" type="checkbox" name='patios' id='patios'>
+        <br>
+        <label form="bricklaying">Brick Laying: </label>
+        <input class="form" type="checkbox" name='bricklaying' id='bricklaying'>
+        <br>
+        <hr>
+        {% endfor %}
+
+        {% for add in Address.query.filter_by(jobs_id=id) %}
+        <h1>
+            Edit Jobs Contact Details:
+        </h1>
+        <hr>
+        <label form="address1">Address Line 1: </label>
+        <input class="form" type="text" value="{{add.address1}}" name='address1' id='address1'></input>
+        <br>
+        <label form="address2">Address Line 2:</label>
+        <input class="form" type="text" value="{{add.address2}}" name='address2' id='address2'></input>
+        <br>
+        <label form="address3">Address Line 3: </label>
+        <input class="form" type="text" value="{{add.address3}}" name='address3' id='address3'></input>
+        <br>
+        <label form="postcode">Postcode: </label>
+        <input class="form" type="text" value="{{add.postcode}}" name='postcode' id='postcode'></input>
+        <br>
+        <hr>
+        {% endfor %}
+
+        {% for det in CstmDt.query.filter_by(jobs_id=id) %}
+        <h1>
+            Edit Customers Contact Details:
+        </h1>
+        <hr>
+        <label form="customername">Customers Full Name: </label>
+        <input class="form" type="text" value="{{det.customername}}" name='customername' id='customername'></input>
+        <br>
+        <label form="customerphone">Customers Phone Number: </label>
+        <input class="form" type="text" value="{{det.customerphone}}" name='customerphone' id='customerphone'></input>
+        <br>
+        <label form="customeremail">Customers Email Address: </label>
+        <input class="form" type="text" value="{{det.customeremail}}" name='customeremail' id='customeremail'></input>
+        <br>
+        <hr>
+        {% endfor %}
+
+        
+        <br>
+        <input type='submit' value='Save Changes'></input>
+    </form>
+</div>
+{% endblock %}

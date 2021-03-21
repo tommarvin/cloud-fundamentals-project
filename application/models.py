@@ -5,7 +5,7 @@ class Team(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     teamnumber = db.Column(db.Integer, nullable=False)
     workers_id = db.Column(db.Integer, db.ForeignKey('workers.id'))
-    jobs_id = db.Column(db.Integer, db.ForeignKey('jobs.id'))
+    jobs_id = db.Column(db.Integer, db.ForeignKey('jobs.id'), nullable=True)
 
 
 class Workers(db.Model):

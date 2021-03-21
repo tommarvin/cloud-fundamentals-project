@@ -1,8 +1,8 @@
 {% extends 'base.html' %} 
 
 {% block body %} 
-<h1>Job Address:</h1>
-<br>
+<h1>Job {{id}} Address:</h1>
+
 <div>
     {% for add in Address.query.filter_by(jobs_id=id) %} 
     <h3>

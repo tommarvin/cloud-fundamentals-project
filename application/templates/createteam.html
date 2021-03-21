@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<hr>
+<h2>
+    Job {{id}} Requirements:
+    {% for req in Req.query.filter_by(jobs_id=id) %}
+    {% if req.mowing == True %}
+    |    Mowing    |  
+    {% endif %}
+    {% if req.hedging == True %}
+    |    Hedging    |
+    {% endif %}
+    {% if req.fencing == True %}
+    |    Fencing    |
+    {% endif %}
+    {% if req.patios == True %}
+    |    Patios    |
+    {% endif %}
+    {% if req.bricklaying == True %}
+    |    Brick Laying    |
+    {% endif %}
+    {% endfor %} 
+    <br>
+    <br>
+    Job {{id}} Estimated Workers Required:
+    {% for jobs in Jobs.query.filter_by(id=id) %} 
+    {{jobs.numbworkers}}
+    {% endfor %}
+</h2>
+<hr>
+<h1>
+    Team {{id}} Active Members:
+</h1>
+<table class='center' border='5'>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Skills</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for x in InTeam %}
+        <tr>
+            {% for workers in Workers.query.filter_by(id=x) %}
+            <td>{{workers.id}}</td>
+            <td>{{workers.firstname}} {{workers.lastname}}</td>
+            <td>{{workers.age}}</td>
+            {% endfor %}
+
+
+            {% for capab in Capab.query.filter_by(id=x) %}
+            <td>
+                {% if capab.mowing == True %}
+                | Mowing |
+                {% endif %}
+                {% if capab.hedging == True %}
+                | Hedging |
+                {% endif %}
+                {% if capab.fencing == True %}
+                | Fencing |
+                {% endif %}
+                {% if capab.patios == True %}
+                | Patios |
+                {% endif %}
+                {% if capab.bricklaying == True %}
+                | Brick Laying |
+                {% endif %}
+            </td>
+            <td>
+                <form class='center' action='/My-Jobs/Create-Team/Remove/{{id}}/{{capab.workers_id}}' method='POST'>
+                    <button class='center' type="submit">Remove</button>
+                </form>
+            </td>
+            {% endfor %}
+
+        </tr>
+        {%endfor%}
+</table>
+<br>
+<br>
+<br>
+<h1>
+    Add Additional Workers for Job {{id}}:
+</h1>
+
+<table class='center' border='5'>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Skills</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+
+        {% for x in NotTeam %}
+        <tr>
+            {% for workers in Workers.query.filter_by(id=x)%}
+            <td>{{workers.id}}</td>
+            <td>{{workers.firstname}} {{workers.lastname}}</td>
+            <td>{{workers.age}}</td>
+            {% endfor %}
+            
+
+            {% for capab in Capab.query.filter_by(id=x)%}
+            <td>
+                {% if capab.mowing == True %}
+                | Mowing |
+                {% endif %}
+                {% if capab.hedging == True %}
+                | Hedging |
+                {% endif %}
+                {% if capab.fencing == True %}
+                | Fencing |
+                {% endif %}
+                {% if capab.patios == True %}
+                | Patios |
+                {% endif %}
+                {% if capab.bricklaying == True %}
+                | Brick Laying |
+                {% endif %}
+            </td>
+            <td>
+                <form class='center' action='/My-Jobs/Create-Team/Add/{{id}}/{{capab.workers_id}}' method='POST'>
+                    <button class='center' type="submit">Add</button>
+                </form>
+            </td>
+            {% endfor %}
+        </tr>
+        {%endfor%}
+</table>
+<br>
+<br>
+<div>
+    <form action='/My-Jobs' method="POST">
+        <button class='center' type="submit">Done</button>    
+    </form>
+</div>
+
+{% endblock %}
