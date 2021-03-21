@@ -8,5 +8,6 @@ Simple CRUD application, builld using flask and sqlalchemy, that allows users to
 # Requirements.txt
 ![image](https://user-images.githubusercontent.com/80106830/111922721-3b9e7c80-8a93-11eb-9c49-09774ff570da.png)
 
+localhost:50074
 
  
