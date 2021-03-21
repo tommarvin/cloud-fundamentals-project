@@ -40,8 +40,7 @@
                     <button class='center' type="submit">View Workers Contact Details</button>
                 </form>
             </td>
-            {% endfor %}
-
+            {% endfor %}            
 
             {% for capab in Capab.query.filter_by(workers_id=x) %}
             <td>
