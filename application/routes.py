@@ -155,10 +155,6 @@ def Create_Team(id):
 @app.route('/My-Jobs/Create-Team/Add/<ID>/<id>', methods=['POST', 'GET'])
 def Add_First_Member(ID, id):
     if request.method =='POST':
-        a = []
-        for worker in Workers.query.all():
-            a.append(worker)
-        y = (len(a)+50)
 
         workerD = Workers.query.filter_by(id=id).first()
         jobD = Jobs.query.filter_by(id=ID).first()
