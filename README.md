@@ -5,7 +5,7 @@ Simple CRUD application, builld using flask and sqlalchemy, that allows users to
 
 
 
-#Requirements.txt
+Requirements.txt
 attrs==20.3.0
 click==7.1.2
 coverage==5.5
