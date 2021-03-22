@@ -15,11 +15,14 @@
 # My Approach
 
 # Project Tracking:
-User Stories
+User Stories:
+To help me get an idea of what I really wanted to include in my application, I used User Stories so that I had a set of clear pass or fail criteria that I could refer back to when writing the code.
 
 ![image](https://user-images.githubusercontent.com/80106830/111926916-a86f4200-8aa6-11eb-9e6c-55651897a1ae.png)
 
-Trello Board
+
+Trello Board:
+Again, to give me further clarity of what I wanted to include in my project, I created a trello board where I could move each task along as I either began or completed it.
 
 
 ![image](https://user-images.githubusercontent.com/80106830/111927254-094b4a00-8aa8-11eb-9473-5ed353b17fc0.png)
