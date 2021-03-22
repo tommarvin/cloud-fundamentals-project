@@ -14,7 +14,7 @@
 
 # My Approach
 
-My CRUD application will allow the user to create workers and their detail's to a table which they can then view and edit as they please. I want to create the same idea as mentioned for workers for jobs as well. I want the workers to have capabilities that can be compared to requirements of that of the jobs so the user will be able to match workers up to jobs based on what the job requires and whether the worker is capable to do the job. I will build the relationship between workers and jobs by a model called teams. Each job will have a team number, a workers connection and a job connection so that the two main tables (workers and jobs) can be connected by this third table using foreign keys.
+My CRUD application will allow the user to create workers and their detail's to a table which they can then view and edit as they please. I want to create the same idea as mentioned for workers, for jobs as well. I want the workers to have capabilities that can be compared to requirements of that of the jobs so the user will be able to match workers up to jobs based on what the job requires and whether the worker is capable to do the job. I will build the relationship between workers and jobs by a model called teams. Each job will have a team number, a workers connection and a job connection so that the two main tables (workers and jobs) can be connected by this third table using foreign keys.
 
 Workers:
 - A name
@@ -59,6 +59,11 @@ To give me further clarity of what I should be doing at a given time or rather w
 # Risk Assessment
 
 # Testing
+
+I have tested my application using pytest. I only achieved 73% coverage, leaving a large proportion of application/routes.py uncovered. This was due to the amount of routes involved within my application and the lack of time dedicated to this section of the project as the time required for this nearing the deadline was under estimated.
+
+![image](https://user-images.githubusercontent.com/80106830/111929471-4d414d80-8aae-11eb-99cf-9a6b585cdcfd.png)
+
 
 # CI Server Jenkins
 
