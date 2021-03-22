@@ -76,7 +76,7 @@ I have tested my application using pytest. I only achieved 73% coverage, leaving
 
 
 # Front End Design
-I have a very simple but clear front end design for my application. My aim was to make it as simple for the user a possible with data clearly displayed and actions performed to the data easy as well. The addition of the navbar makes the application significantly easier going to and from different functions of the application. to give the navbar the hover effect i used a lot of the styling from the following page: https://www.w3schools.com/howto/howto_js_topnav.asp 
+I have a very simple but clear front end design for my application. My aim was to make it as simple for the user a possible with data clearly displayed and actions performed to the data easy as well. The addition of the navbar makes the application significantly easier going to and from different functions of the application. to give the navbar the hover effect i used a lot of the styling from the following page: https://www.w3schools.com/howto/howto_css_dropdown_navbar.asp
 
 Create Worker
 
