@@ -52,6 +52,12 @@ To give me further clarity of what I should be doing at a given time or rather w
 
 
 
+# Risk Assessment:
+
+![image](https://user-images.githubusercontent.com/80106830/111937825-85ea2280-8ac0-11eb-9eb1-211b6abd7353.png)
+
+
+
 # My Database Structure
 ![image](https://user-images.githubusercontent.com/80106830/111928127-ae672200-8aaa-11eb-973c-dac452e5b25d.png)
 
@@ -64,8 +70,6 @@ I have tested my application using pytest. I only achieved 73% coverage, leaving
 
 ![image](https://user-images.githubusercontent.com/80106830/111929471-4d414d80-8aae-11eb-99cf-9a6b585cdcfd.png)
 
-
-# Risk Assessment:
 
 
 
