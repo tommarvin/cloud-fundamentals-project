@@ -2,6 +2,16 @@
 
 # Requirements
 
+Kanban Board: Trello or an equivalent Kanban Board
+Database: GCP SQL Server or other Cloud Hosted managed Database.
+Programming language: Python
+Unit Testing with Python (Pytest)
+Integration Testing with Python (Selenium)
+Front-end: Flask (HTML)
+Version Control: Git
+CI Server: Jenkins
+Cloud server: GCP Compute Engine
+
 # My Approach
 
 # Project Tracking:
