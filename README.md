@@ -60,7 +60,7 @@ To give me further clarity of what I should be doing at a given time or rather w
 
 # Testing
 
-I have tested my application using pytest. I only achieved 73% coverage, leaving a large proportion of application/routes.py uncovered. This was due to the amount of routes involved within my application and the lack of time dedicated to this section of the project as the time required for this nearing the deadline was under estimated.
+I have tested my application using pytest. I only achieved 73% coverage, leaving a large proportion of application/routes.py uncovered. This was due to the amount of routes involved within my application. There was also a lack of time dedicated to this section of the project, the time required for the testing nearer the deadline was under estimated.
 
 ![image](https://user-images.githubusercontent.com/80106830/111929471-4d414d80-8aae-11eb-99cf-9a6b585cdcfd.png)
 
