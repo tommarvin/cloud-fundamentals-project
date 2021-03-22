@@ -117,3 +117,13 @@ I have a very simple but clear front end design for my application. My aim was t
 
 # Requirements.txt
 ![image](https://user-images.githubusercontent.com/80106830/111922721-3b9e7c80-8a93-11eb-9c49-09774ff570da.png)
+
+
+# What could have been done better?
+- firstly, the most obvious improvement for my project would be my unit testing coverage. I think that i spent too long on the front end application in areas that were not         necessary for the criteria and therefore didnt have enough time to spend improving test coverage. 
+- Parts of my code within my application could be reduced in length. Towards the deadline I was spotting more and more functions that could have been written far more efficiently. 
+
+
+
+
+
