@@ -56,6 +56,23 @@ class TestBase(TestCase):
         db.session.commit()
 
 
+class TestDB(TestBase):
+
+
+    def test_workers_model(self):
+        """
+        Test that the sql database is connected to my application
+        """
+        self.assertEqual(Workers.query.count(), 2)
+
+    def test_ConD1_model(self):
+        """
+        Test that the sql database is fully connected to my application
+        """
+        self.assertEqual(ConD1.query.count(), 1)
+
+
+
 
 
 class TestViews(TestBase):
