@@ -56,7 +56,7 @@ To give me further clarity of what I should be doing at a given time or rather w
 ![image](https://user-images.githubusercontent.com/80106830/111928127-ae672200-8aaa-11eb-973c-dac452e5b25d.png)
 
 
-# Risk Assessment
+
 
 # Testing
 
@@ -65,7 +65,7 @@ I have tested my application using pytest. I only achieved 73% coverage, leaving
 ![image](https://user-images.githubusercontent.com/80106830/111929471-4d414d80-8aae-11eb-99cf-9a6b585cdcfd.png)
 
 
-# CI Server Jenkins
+# Risk Assessment:
 
 
 
