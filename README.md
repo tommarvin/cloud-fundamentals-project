@@ -17,14 +17,14 @@
 My CRUD application will allow the user to create workers and their detail's to a table which they can then view and edit as they please. I want to create the same idea as mentioned for workers, for jobs as well. I want the workers to have capabilities that can be compared to requirements of that of the jobs so the user will be able to match workers up to jobs based on what the job requires and whether the worker is capable to do the job. I will build the relationship between workers and jobs by a model called teams. Each job will have a team number, a workers connection and a job connection so that the two main tables (workers and jobs) can be connected by this third table using foreign keys.
 
 Workers:
-- A name
+- Name
 - Age
-- A listen of things that they are capable of doing
+- list of things that they are capable of doing
 - Contact Details
 
 Jobs:
 - Address
-- A list of requirements for the job that match up with the capabilities of workers
+- list of requirements for the job that match up with the capabilities of workers
 - Start Date
 - A team
 - Customer Contact details
