@@ -32,7 +32,7 @@ To give me further clarity of what I should be doing at a given time or rather w
 
 
 # My Database Structure
-![image](https://user-images.githubusercontent.com/80106830/111926724-eb7ce580-8aa5-11eb-9e53-53d2d29e7707.png)
+![image](https://user-images.githubusercontent.com/80106830/111928127-ae672200-8aaa-11eb-973c-dac452e5b25d.png)
 
 
 # Risk Assessment
