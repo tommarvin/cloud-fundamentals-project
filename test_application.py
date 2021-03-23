@@ -55,6 +55,13 @@ class TestBase(TestCase):
         db.session.remove()
         db.session.commit()
 
+        
+class TestDB(TestBase):
+    def test_workers_model(self):
+        """
+        Test that the sql database is connected to my application
+        """
+        self.assertEqual(Workers.query.count(), 1)
 
 class TestDB(TestBase):
 
