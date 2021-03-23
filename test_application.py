@@ -63,13 +63,8 @@ class TestDB(TestBase):
         """
         Test that the sql database is connected to my application
         """
-        self.assertEqual(Workers.query.count(), 2)
+        self.assertEqual(Workers.query.count(), 1)
 
-    def test_ConD1_model(self):
-        """
-        Test that the sql database is fully connected to my application
-        """
-        self.assertEqual(ConD1.query.count(), 1)
 
 
 
